@@ -157,7 +157,8 @@ if uploaded_resumes:
                     st.info(f"Consider learning: {skill.capitalize()}")
 
             with st.expander("🧾 View Parsed Resume Text"):
-                st.text_area("Resume Text", res["text"][:3000], height=200)
+                st.text_area("Resume Text", res["text"][:3000], height=200, key=f"resume_text_{res['name']}")
+
 
             pdf_data = generate_pdf(res["name"], res["semantic_score"], res["skill_score"], res["matched"], res["missing"])
             b64 = base64.b64encode(pdf_data).decode()
